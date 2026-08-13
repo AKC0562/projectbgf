@@ -22,6 +22,7 @@
  * - User model is referenced for owner identity
  */
 
+import mongoose from 'mongoose';
 import CompanionProfile from '../models/CompanionProfile.js';
 import Category from '../models/Category.js';
 import User from '../models/User.js';
@@ -211,7 +212,23 @@ export const searchCompanions = asyncHandler(async (req, res) => {
 
   // Category filter
   if (category) {
-    filter.categories = category;
+    const categoryQuery = [{ slug: category }];
+    if (mongoose.isValidObjectId(category)) {
+      categoryQuery.push({ _id: category });
+    }
+
+    const categoryRecord = await Category.findOne({
+      $or: categoryQuery,
+      isActive: true,
+    }).select('_id');
+
+    if (!categoryRecord) {
+      return res.status(200).json(
+        ApiResponse.paginated([], buildPaginationResponse(0, page, limit), 'Companions fetched')
+      );
+    }
+
+    filter.categories = categoryRecord._id;
   }
 
   // Price range filter
@@ -307,7 +324,7 @@ export const getCompanionProfile = asyncHandler(async (req, res) => {
   }
 
   // Only show active, non-deleted profiles to non-admins
-  if (!profile.isActive && req.user.role !== USER_ROLES.ADMIN) {
+  if (!profile.isActive) {
     throw ApiError.notFound('Companion profile not found');
   }
 

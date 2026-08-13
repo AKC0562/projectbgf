@@ -43,15 +43,13 @@ import kycRequired from '../middleware/kycRequired.js';
 
 const router = Router();
 
-// ── Public-ish route (still behind auth but all roles can access) ──
-router.get('/categories', protect, getCategories);
-
-// ── All routes below require authentication ──
-router.use(protect);
-
-// ── Discovery (clients searching for companions) ──
+// Discovery is read-only and powers the public marketplace experience.
+router.get('/categories', getCategories);
 router.get('/search', searchCompanionsValidator, validate, searchCompanions);
 router.get('/:companionId', getCompanionProfile);
+
+// ── All profile-management routes require authentication ──
+router.use(protect);
 
 // ── Companion Self-Management ──
 router.post('/profile', kycRequired, createCompanionProfileValidator, validate, createCompanionProfile);

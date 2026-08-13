@@ -572,12 +572,11 @@ userSchema.methods.calculateProfileCompletion = function () {
  * The regex matches any method starting with "find" — covers
  * find, findOne, findById, findOneAndUpdate, findOneAndDelete, etc.
  */
-userSchema.pre(/^find/, function (next) {
+userSchema.pre(/^find/, function () {
   // Only add the filter if the query doesn't already specify isDeleted
   if (this.getFilter().isDeleted === undefined) {
     this.where({ isDeleted: false });
   }
-  next();
 });
 
 // ──────────────────────────────────────────────

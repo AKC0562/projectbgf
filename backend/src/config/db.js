@@ -64,9 +64,7 @@ const connectDB = async () => {
 
   } catch (error) {
     console.error(`✗ MongoDB connection failed: ${error.message}`);
-    // Exit with failure code — orchestrators (Docker, PM2, systemd)
-    // will detect this and can auto-restart the process
-    process.exit(1);
+    throw error;
   }
 };
 

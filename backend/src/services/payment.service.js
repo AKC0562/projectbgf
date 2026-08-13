@@ -31,8 +31,8 @@ import { PAYMENT_STATUS } from '../constants/index.js';
  * @param {string} bookingId
  * @returns {Promise<object>} Razorpay order object
  */
-const createOrder = async (bookingId) => {
-  const booking = await Booking.findById(bookingId);
+const createOrder = async (bookingId, clientId) => {
+  const booking = await Booking.findOne({ _id: bookingId, clientId });
   if (!booking) {
     throw ApiError.notFound('Booking not found');
   }
@@ -85,7 +85,12 @@ const verifyPayment = async (orderId, paymentId, signature) => {
     .update(body)
     .digest('hex');
 
-  if (expectedSignature !== signature) {
+  const expectedBuffer = Buffer.from(expectedSignature, 'utf8');
+  const signatureBuffer = Buffer.from(signature, 'utf8');
+  if (
+    expectedBuffer.length !== signatureBuffer.length ||
+    !crypto.timingSafeEqual(expectedBuffer, signatureBuffer)
+  ) {
     throw ApiError.badRequest('Invalid payment signature — payment verification failed');
   }
 

@@ -23,6 +23,18 @@ import initializeSocket from './src/socket/index.js';
 
 const PORT = parseInt(process.env.PORT, 10) || 5000;
 
+const validateEnvironment = () => {
+  const required = ['MONGODB_URI', 'JWT_ACCESS_SECRET', 'JWT_REFRESH_SECRET'];
+  if (process.env.NODE_ENV === 'production') {
+    required.push('RAZORPAY_KEY_ID', 'RAZORPAY_KEY_SECRET', 'RAZORPAY_WEBHOOK_SECRET');
+  }
+  const missing = required.filter((name) => !process.env[name]);
+
+  if (process.env.NODE_ENV === 'production' && missing.length > 0) {
+    throw new Error(`Missing required production environment variables: ${missing.join(', ')}`);
+  }
+};
+
 /**
  * Create HTTP server wrapping the Express app.
  * Needed for Socket.io — it attaches to the HTTP server, not the Express app.
@@ -34,6 +46,8 @@ const server = http.createServer(app);
  */
 const startServer = async () => {
   try {
+    validateEnvironment();
+
     // Step 1: Connect to MongoDB
     await connectDB();
 
@@ -73,10 +87,12 @@ const gracefulShutdown = (signal) => {
     process.exit(0);
   });
 
-  setTimeout(() => {
+  const forceShutdownTimer = setTimeout(() => {
     console.error('  ✗ Forced shutdown — timeout');
     process.exit(1);
   }, 10000);
+
+  forceShutdownTimer.unref();
 };
 
 process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));

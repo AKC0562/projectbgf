@@ -151,8 +151,8 @@ export const updateCompanionProfileValidator = [
 export const searchCompanionsValidator = [
   query('category')
     .optional()
-    .isMongoId()
-    .withMessage('Category must be a valid ID'),
+    .matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+    .withMessage('Category must be a valid ID or slug'),
 
   query('minRate')
     .optional()

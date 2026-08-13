@@ -7,6 +7,8 @@
 import paymentService from '../services/payment.service.js';
 import ApiResponse from '../utils/ApiResponse.js';
 import asyncHandler from '../utils/asyncHandler.js';
+import crypto from 'crypto';
+import ApiError from '../utils/ApiError.js';
 
 /**
  * @route   POST /api/v1/payments/create-order
@@ -16,7 +18,7 @@ import asyncHandler from '../utils/asyncHandler.js';
 export const createOrder = asyncHandler(async (req, res) => {
   const { bookingId } = req.body;
 
-  const order = await paymentService.createOrder(bookingId);
+  const order = await paymentService.createOrder(bookingId, req.user._id);
 
   res.status(201).json(
     new ApiResponse(201, order, 'Payment order created')
@@ -47,26 +49,43 @@ export const verifyPayment = asyncHandler(async (req, res) => {
  * In production, verify the webhook signature from Razorpay headers.
  */
 export const handleWebhook = asyncHandler(async (req, res) => {
-  // In production, verify webhook signature:
-  // const webhookSignature = req.headers['x-razorpay-signature'];
-  // const isValid = Razorpay.validateWebhookSignature(
-  //   JSON.stringify(req.body), webhookSignature, process.env.RAZORPAY_WEBHOOK_SECRET
-  // );
+  const signature = req.headers['x-razorpay-signature'];
+  const rawBody = Buffer.isBuffer(req.body) ? req.body : Buffer.from(JSON.stringify(req.body));
+  const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
 
-  const { event, payload } = req.body;
+  if (!signature || !secret) {
+    throw ApiError.badRequest('Invalid webhook signature');
+  }
+
+  const expected = crypto.createHmac('sha256', secret).update(rawBody).digest('hex');
+  const expectedBuffer = Buffer.from(expected, 'utf8');
+  const signatureBuffer = Buffer.from(signature, 'utf8');
+
+  if (expectedBuffer.length !== signatureBuffer.length || !crypto.timingSafeEqual(expectedBuffer, signatureBuffer)) {
+    throw ApiError.badRequest('Invalid webhook signature');
+  }
+
+  let body;
+  try {
+    body = JSON.parse(rawBody.toString('utf8'));
+  } catch {
+    throw ApiError.badRequest('Invalid webhook payload');
+  }
+
+  const { event, payload } = body;
 
   switch (event) {
     case 'payment.captured':
       // Payment successfully captured — update booking
-      console.log('Payment captured:', payload.payment.entity.id);
+      console.log('Payment captured:', payload?.payment?.entity?.id);
       break;
 
     case 'payment.failed':
-      console.log('Payment failed:', payload.payment.entity.id);
+      console.log('Payment failed:', payload?.payment?.entity?.id);
       break;
 
     case 'refund.processed':
-      console.log('Refund processed:', payload.refund.entity.id);
+      console.log('Refund processed:', payload?.refund?.entity?.id);
       break;
 
     default:

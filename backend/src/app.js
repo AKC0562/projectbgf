@@ -30,6 +30,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import mongoose from 'mongoose';
 
 // Middleware
 import notFound from './middleware/notFound.js';
@@ -48,6 +49,13 @@ import paymentRoutes from './routes/payment.routes.js';
 import adminRoutes from './routes/admin.routes.js';
 
 const app = express();
+app.disable('x-powered-by');
+app.set('trust proxy', 1);
+
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 // ──────────────────────────────────────────────
 // 1. Security Middleware
@@ -55,18 +63,28 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error('Origin is not allowed by CORS'));
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
+// Razorpay signs the exact request bytes. Capture the webhook body before
+// express.json parses it so the signature can be verified reliably.
+app.use('/api/v1/payments/webhook', express.raw({ type: 'application/json', limit: '1mb' }));
+
 // ──────────────────────────────────────────────
 // 2. Body Parsing
 // ──────────────────────────────────────────────
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 app.use(cookieParser());
 
 // ──────────────────────────────────────────────
@@ -89,9 +107,24 @@ app.use(globalLimiter);
 app.get('/api/v1/health', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'Companion API is running',
+    message: 'Companion API is healthy',
     environment: process.env.NODE_ENV,
+    uptime: Math.round(process.uptime()),
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
     timestamp: new Date().toISOString(),
+  });
+});
+
+app.get('/api/v1/health/live', (req, res) => {
+  res.status(200).json({ success: true, status: 'live' });
+});
+
+app.get('/api/v1/health/ready', (req, res) => {
+  const ready = mongoose.connection.readyState === 1;
+  res.status(ready ? 200 : 503).json({
+    success: ready,
+    status: ready ? 'ready' : 'not-ready',
+    database: ready ? 'connected' : 'disconnected',
   });
 });
 
