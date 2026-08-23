@@ -23,6 +23,7 @@ import Booking from "./pages/Booking";
 import CompanionBooking from "./pages/CompanionBooking";
 import MyBookings from "./pages/MyBookings";
 import NotFound from "./pages/NotFound";
+import { CompleteProfile } from "./pages";
 
 function App() {
   const {
@@ -80,6 +81,10 @@ function App() {
 
           <Route element={<ProtectedRoute />}>
 
+            <Route 
+            path="/complete-profile"
+            element={<CompleteProfile/>}
+            />
             {/* User routes */}
             <Route element={<RoleRoute allowedRoles={["user"]} />}>
 

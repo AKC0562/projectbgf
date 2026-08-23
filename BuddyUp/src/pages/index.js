@@ -7,6 +7,7 @@ import Register from "./Register";
 import Explore from "./Explore";
 import MyBookings from "./MyBookings";
 import CompanionBookings from "./CompanionBooking";
+import CompleteProfile from "./CompleteProfiile";
 
 export {
     Home,
@@ -18,4 +19,5 @@ export {
     Explore,
     MyBookings,
     CompanionBookings,
+    CompleteProfile
 }

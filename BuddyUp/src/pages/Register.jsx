@@ -64,7 +64,7 @@ function Register() {
         role: formData.role,
       });
 
-      navigate("/", {
+      navigate("/complete-profile", {
         replace: true,
       });
     } catch (error) {
