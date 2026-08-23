@@ -2,7 +2,7 @@ import { Check, X } from "lucide-react";
 
 import Button from "../common/Button";
 
-import { BOOKING_STATUS } from "../../constants/bookings";
+import { Booking_status } from "../../constants/bookings";
 
 function BookingActions({
   booking,
@@ -12,7 +12,7 @@ function BookingActions({
 }) {
   if (
     booking.status !==
-    BOOKING_STATUS.PENDING
+    Booking_status.PENDING
   ) {
     return null;
   }

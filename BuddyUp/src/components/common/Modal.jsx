@@ -17,10 +17,10 @@ function Modal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-5 py-10 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-5 py-10">
 
       <div
-        className={`relative w-full ${sizes[size]} max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#0b0b0b] p-6 shadow-2xl`}
+        className={`relative w-full ${sizes[size]} max-h-[90vh] overflow-y-auto rounded-3xl border border-purple-900/60 bg-[#130924] p-6 shadow-2xl`}
       >
 
         <div className="flex items-center justify-between gap-4">
@@ -31,7 +31,7 @@ function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-gray-400 transition hover:bg-white/10 hover:text-white"
+            className="rounded-lg p-2 text-gray-400 transition hover:bg-[#220f3e] hover:text-white"
           >
             <X size={20} />
           </button>

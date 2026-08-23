@@ -5,7 +5,7 @@ function AppLayout({
   children,
   user,
   onLogout,
-  logoutLoading = false,
+  logoutLoading,
 }) {
   return (
     <div className="flex min-h-screen flex-col bg-black">

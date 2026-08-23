@@ -73,7 +73,7 @@ function CompanionProfile() {
         </button>
 
         {/* Profile */}
-        <section className="grid overflow-hidden rounded-3xl border border-white/10 bg-white/5 lg:grid-cols-[420px_1fr]">
+        <section className="grid overflow-hidden rounded-3xl border border-purple-900/40 bg-[#130924] lg:grid-cols-[420px_1fr]">
 
           {/* Image */}
           <div className="relative min-h-150">
@@ -100,7 +100,7 @@ function CompanionProfile() {
               </h1>
 
               {companion.isVerified && (
-                <span className="flex items-center gap-1 rounded-full bg-[#570080]/30 px-3 py-1 text-sm text-purple-300">
+                <span className="flex items-center gap-1 rounded-full border border-purple-800/40 bg-[#2a0e4f] px-3 py-1 text-sm text-purple-300">
                   <BadgeCheck size={17} />
                   Verified
                 </span>
@@ -158,7 +158,7 @@ function CompanionProfile() {
                 {companion.activities?.map((activity) => (
                   <span
                     key={activity}
-                    className="rounded-full border border-[#570080]/50 bg-[#570080]/20 px-4 py-2 text-sm text-purple-200"
+                    className="rounded-full border border-purple-800/40 bg-[#1e0e38] px-4 py-2 text-sm text-purple-200"
                   >
                     {activity}
                   </span>
@@ -177,7 +177,7 @@ function CompanionProfile() {
                 {companion.languages?.map((language) => (
                   <span
                     key={language}
-                    className="rounded-lg bg-white/10 px-3 py-2 text-sm text-gray-300"
+                    className="rounded-lg border border-purple-800/40 bg-[#1e0e38] px-3 py-2 text-sm text-purple-200"
                   >
                     {language}
                   </span>

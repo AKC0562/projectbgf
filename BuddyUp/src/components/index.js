@@ -40,3 +40,8 @@ export { default as PageContainer } from "./layout/PageContainer";
 export { default as PageHeader } from "./layout/PageHeader";
 export { default as DashboardLayout } from "./layout/DashboardLayout";
 export { default as AppLayout } from "./layout/AppLayout";
+
+// Guards
+export { default as ProtectedRoute } from "./guards/ProtectedRoute";
+export { default as RoleRoute } from "./guards/RoleRoute";
+export { default as GuestRoute } from "./guards/GuestRoute";

@@ -17,7 +17,7 @@ function CompanionCard({ companion }) {
   };
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-purple-700/30 bg-black shadow-md transition hover:scale-[1.01] hover:shadow-xl hover:shadow-purple-700/30">
+    <article className="overflow-hidden rounded-2xl border border-purple-900/40 bg-[#130924] shadow-md transition hover:scale-[1.01] hover:shadow-xl hover:shadow-purple-900/40">
 
       {/* Image */}
       <div className="relative">
@@ -28,7 +28,7 @@ function CompanionCard({ companion }) {
         />
 
         {companion.isVerified && (
-          <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-black/70 px-3 py-1 text-xs text-white backdrop-blur-sm">
+          <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-[#130924] border border-purple-900/60 px-3 py-1 text-xs text-white">
             <BadgeCheck
               size={15}
               className="text-purple-400"

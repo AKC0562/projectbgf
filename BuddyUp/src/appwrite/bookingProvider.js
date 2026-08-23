@@ -1,10 +1,10 @@
 import { ID, Query } from "appwrite";
-import { tablesDb } from "./client";
+import { tablesDB } from "./client";
 import env from "../config/config";
 
 const bookingProvider = {
     async create(data){
-        return await tablesDb.createRow({
+        return await tablesDB.createRow({
             databaseId:env.appwriteDatabaseId,
             tableId: env.appwriteBookingTableId,
             rowId: ID.unique(),
@@ -12,14 +12,14 @@ const bookingProvider = {
         })
     },
     async getById(bookingId){
-        return await tablesDb.getRow({
+        return await tablesDB.getRow({
             databaseId:env.appwriteDatabaseId,
             tableId:env.appwriteBookingTableId,
             rowId:bookingId
         })
     },
     async getByClientId(clientId){
-        const response = await tablesDb.listRows({
+        const response = await tablesDB.listRows({
             databaseId:env.appwriteDatabaseId,
             tableId: env.appwriteBookingTableId,
             queries:[
@@ -29,7 +29,7 @@ const bookingProvider = {
         return response.rows;
     },
     async getByCompanionId(companionId){
-        const response = await tablesDb.listRows({
+        const response = await tablesDB.listRows({
             databaseId:env.appwriteDatabaseId,
             tableId:env.appwriteBookingTableId,
             rowId:companionId
@@ -37,7 +37,7 @@ const bookingProvider = {
         return response.rows
     },
     async updateStatus(bookingId,status){
-        return await tablesDb.updateRow({
+        return await tablesDB.updateRow({
             databaseId:env.appwriteDatabaseId,
             tableId:env.appwriteBookingTableId,
             rowId:bookingId,
@@ -47,7 +47,7 @@ const bookingProvider = {
         })
     },
     async updatePaymentStatus(bookinId, paymentStatus){
-        return await tablesDb.updateRow({
+        return await tablesDB.updateRow({
             databaseId:env.appwriteDatabaseId,
             tableId:env.appwriteBookingTableId,
             rowId:bookinId,

@@ -105,7 +105,7 @@ function Booking() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-black text-white flex items-center justify-center">
+      <main className="min-h-screen bg-transparent text-white flex items-center justify-center">
         <h1 className="text-2xl font-semibold">
           Loading booking...
         </h1>
@@ -115,7 +115,7 @@ function Booking() {
 
   if (error || !companion) {
     return (
-      <main className="min-h-screen bg-black text-white flex items-center justify-center">
+      <main className="min-h-screen bg-transparent text-white flex items-center justify-center">
         <h1 className="text-2xl font-bold text-red-400">
           {error || "Companion not found"}
         </h1>
@@ -125,10 +125,10 @@ function Booking() {
 
   if (bookingSuccess && createdBooking) {
   return (
-    <main className="min-h-screen bg-black px-5 py-10 text-white">
+    <main className="min-h-screen bg-transparent px-5 py-10 text-white">
       <div className="mx-auto flex min-h-[70vh] max-w-2xl items-center justify-center">
 
-        <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
+        <div className="w-full rounded-3xl border border-purple-900/40 bg-[#130924] p-8 text-center shadow-xl">
 
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 text-3xl">
             ✓
@@ -143,7 +143,7 @@ function Booking() {
             submitted.
           </p>
 
-          <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-5 text-left">
+          <div className="mt-8 rounded-2xl border border-purple-900/40 bg-[#0d0519] p-5 text-left">
 
             <div className="flex justify-between">
               <span className="text-gray-400">
@@ -198,7 +198,7 @@ function Booking() {
               </span>
             </div>
 
-            <div className="my-5 border-t border-white/10" />
+            <div className="my-5 border-t border-purple-900/40" />
 
             <div className="flex justify-between">
               <span className="font-semibold">
@@ -215,7 +215,7 @@ function Booking() {
                 Status
               </span>
 
-              <span className="rounded-full bg-yellow-500/10 px-3 py-1 text-sm text-yellow-400">
+              <span className="rounded-full border border-yellow-600/40 bg-[#2d2208] px-3 py-1 text-sm text-yellow-300">
                 {createdBooking.status}
               </span>
             </div>
@@ -238,7 +238,7 @@ function Booking() {
 }
 
   return (
-    <main className="min-h-screen bg-black px-5 py-10 text-white">
+    <main className="min-h-screen bg-transparent px-5 py-10 text-white">
       <div className="mx-auto max-w-5xl">
 
         <h1 className="text-4xl font-bold">
@@ -252,7 +252,7 @@ function Booking() {
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_350px]">
 
           {/* Booking Form */}
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div className="rounded-3xl border border-purple-900/40 bg-[#130924] p-6 shadow-xl">
 
             {/* Activity */}
             <div>
@@ -272,7 +272,7 @@ function Booking() {
                     }));
                   }
                 }}
-                className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none focus:border-[#570080]"
+                className="w-full rounded-xl border border-purple-900/50 bg-[#1a0c30] px-4 py-3 text-white outline-none focus:border-[#a855f7]"
               >
                 <option value="">
                   Select activity
@@ -311,7 +311,7 @@ function Booking() {
                     }));
                   }
                 }}
-                className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none focus:border-[#570080]"
+                className="w-full rounded-xl border border-purple-900/50 bg-[#1a0c30] px-4 py-3 text-white outline-none focus:border-[#a855f7]"
               />
 
               {validationErrors.date && (
@@ -340,7 +340,7 @@ function Booking() {
                     }));
                   }
                 }}
-                className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none focus:border-[#570080]"
+                className="w-full rounded-xl border border-purple-900/50 bg-[#1a0c30] px-4 py-3 text-white outline-none focus:border-[#a855f7]"
               />
 
               {validationErrors.time && (
@@ -370,7 +370,7 @@ function Booking() {
                     }));
                   }
                 }}
-                className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-white outline-none focus:border-[#570080]"
+                className="w-full rounded-xl border border-purple-900/50 bg-[#1a0c30] px-4 py-3 text-white outline-none focus:border-[#a855f7]"
               >
                 {Booking_duration_options.map(
                   (option) => (
@@ -394,7 +394,7 @@ function Booking() {
           </div>
 
           {/* Summary */}
-          <aside className="h-fit rounded-3xl border border-white/10 bg-white/5 p-6">
+          <aside className="h-fit rounded-3xl border border-purple-900/40 bg-[#130924] p-6 shadow-xl">
 
             <div className="flex items-center gap-4">
 

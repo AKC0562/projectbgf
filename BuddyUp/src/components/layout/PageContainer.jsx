@@ -6,7 +6,6 @@ function PageContainer({
     <main
       className={`
         min-h-screen
-        bg-black
         px-5
         py-10
         text-white

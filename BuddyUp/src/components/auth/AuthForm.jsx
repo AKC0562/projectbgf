@@ -23,7 +23,7 @@ function AuthForm({
 
       <form
         onSubmit={onSubmit}
-        className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8"
+        className="rounded-3xl border border-purple-900/40 bg-[#130924] p-6 sm:p-8"
       >
         <div className="space-y-5">
           {children}

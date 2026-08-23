@@ -5,7 +5,7 @@ function CompanionProfileCard({
   onBook,
 }) {
   return (
-    <section className="grid overflow-hidden rounded-3xl border border-white/10 bg-white/5 lg:grid-cols-[420px_1fr]">
+    <section className="grid overflow-hidden rounded-3xl border border-purple-900/40 bg-[#130924] lg:grid-cols-[420px_1fr]">
 
       {/* Image */}
       <div className="relative min-h-150">

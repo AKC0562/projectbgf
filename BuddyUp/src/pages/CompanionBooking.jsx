@@ -18,7 +18,7 @@ import authService from "../services/authService";
 import bookingService from "../services/bookingService";
 import companionService from "../services/companionService";
 
-import { BOOKING_STATUS } from "../constants/bookingStatus";
+import { Booking_status } from "../constants/bookings";
 
 function CompanionBookings() {
   const [bookings, setBookings] = useState([]);
@@ -124,60 +124,60 @@ function CompanionBookings() {
 
       pending: bookings.filter(
         (booking) =>
-          booking.status === BOOKING_STATUS.PENDING
+          booking.status === Booking_status.PENDING
       ).length,
 
       confirmed: bookings.filter(
         (booking) =>
-          booking.status === BOOKING_STATUS.CONFIRMED
+          booking.status === Booking_status.CONFIRMED
       ).length,
 
       completed: bookings.filter(
         (booking) =>
-          booking.status === BOOKING_STATUS.COMPLETED
+          booking.status === Booking_status.COMPLETED
       ).length,
     };
   }, [bookings]);
 
   const getStatusStyles = (status) => {
     switch (status) {
-      case BOOKING_STATUS.CONFIRMED:
+      case Booking_status.CONFIRMED:
         return {
           container:
-            "bg-green-500/10 border-green-500/20",
-          text: "text-green-400",
+            "bg-[#063321] border-emerald-500/50",
+          text: "text-emerald-300",
           icon: Check,
         };
 
-      case BOOKING_STATUS.COMPLETED:
+      case Booking_status.COMPLETED:
         return {
           container:
-            "bg-blue-500/10 border-blue-500/20",
-          text: "text-blue-400",
+            "bg-[#08223d] border-blue-500/50",
+          text: "text-blue-300",
           icon: CircleCheck,
         };
 
-      case BOOKING_STATUS.REJECTED:
+      case Booking_status.REJECTED:
         return {
           container:
-            "bg-red-500/10 border-red-500/20",
-          text: "text-red-400",
+            "bg-[#350d14] border-red-500/50",
+          text: "text-red-300",
           icon: CircleX,
         };
 
-      case BOOKING_STATUS.CANCELLED:
+      case Booking_status.CANCELLED:
         return {
           container:
-            "bg-gray-500/10 border-gray-500/20",
-          text: "text-gray-400",
+            "bg-[#1e1e24] border-gray-600/50",
+          text: "text-gray-300",
           icon: X,
         };
 
       default:
         return {
           container:
-            "bg-yellow-500/10 border-yellow-500/20",
-          text: "text-yellow-400",
+            "bg-[#2d2208] border-yellow-600/50",
+          text: "text-yellow-300",
           icon: Hourglass,
         };
     }
@@ -193,21 +193,21 @@ function CompanionBookings() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-black px-5 py-10 text-white sm:px-6 lg:px-8">
+      <main className="min-h-screen bg-transparent px-5 py-10 text-white sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
 
           <div className="animate-pulse">
-            <div className="h-4 w-40 rounded bg-white/10" />
+            <div className="h-4 w-40 rounded bg-[#1e0e38]" />
 
-            <div className="mt-4 h-10 w-72 rounded bg-white/10" />
+            <div className="mt-4 h-10 w-72 rounded bg-[#1e0e38]" />
 
-            <div className="mt-3 h-5 w-96 max-w-full rounded bg-white/10" />
+            <div className="mt-3 h-5 w-96 max-w-full rounded bg-[#1e0e38]" />
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[1, 2, 3, 4].map((item) => (
                 <div
                   key={item}
-                  className="h-28 rounded-2xl border border-white/10 bg-white/5"
+                  className="h-28 rounded-2xl border border-purple-900/40 bg-[#130924]"
                 />
               ))}
             </div>
@@ -216,7 +216,7 @@ function CompanionBookings() {
               {[1, 2, 3].map((item) => (
                 <div
                   key={item}
-                  className="h-48 rounded-3xl border border-white/10 bg-white/5"
+                  className="h-48 rounded-3xl border border-purple-900/40 bg-[#130924]"
                 />
               ))}
             </div>
@@ -229,7 +229,7 @@ function CompanionBookings() {
 
   if (error && bookings.length === 0) {
     return (
-      <main className="min-h-screen bg-black px-5 py-10 text-white sm:px-6 lg:px-8">
+      <main className="min-h-screen bg-transparent px-5 py-10 text-white sm:px-6 lg:px-8">
         <div className="mx-auto flex min-h-[60vh] max-w-7xl items-center justify-center">
 
           <div className="w-full max-w-md rounded-3xl border border-red-500/20 bg-red-500/5 p-8 text-center">
@@ -266,7 +266,7 @@ function CompanionBookings() {
   }
 
   return (
-    <main className="min-h-screen bg-black px-5 py-10 text-white sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-transparent px-5 py-10 text-white sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -291,7 +291,7 @@ function CompanionBookings() {
             type="button"
             disabled={refreshing}
             onClick={() => loadBookings(true)}
-            className="flex w-fit items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex w-fit items-center gap-2 rounded-xl border border-purple-800/40 bg-[#1e0e38] px-4 py-2.5 text-sm font-medium transition hover:bg-[#2a144e] disabled:cursor-not-allowed disabled:opacity-50"
           >
             <RefreshCw
               size={16}
@@ -311,9 +311,9 @@ function CompanionBookings() {
 
         {/* Error banner */}
         {error && (
-          <div className="mt-6 flex items-center justify-between gap-4 rounded-2xl border border-red-500/20 bg-red-500/5 px-4 py-3">
+          <div className="mt-6 flex items-center justify-between gap-4 rounded-2xl border border-red-500/40 bg-[#350d14] px-4 py-3">
 
-            <p className="text-sm text-red-400">
+            <p className="text-sm text-red-300">
               {error}
             </p>
 
@@ -332,7 +332,7 @@ function CompanionBookings() {
         <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
           {/* Total */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div className="rounded-2xl border border-purple-900/40 bg-[#130924] p-5 shadow-md">
             <div className="flex items-center justify-between">
 
               <div>
@@ -345,7 +345,7 @@ function CompanionBookings() {
                 </p>
               </div>
 
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-purple-500/10">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-purple-800/40 bg-[#220c3d]">
                 <Users
                   size={21}
                   className="text-purple-400"
@@ -356,7 +356,7 @@ function CompanionBookings() {
           </div>
 
           {/* Pending */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div className="rounded-2xl border border-purple-900/40 bg-[#130924] p-5 shadow-md">
             <div className="flex items-center justify-between">
 
               <div>
@@ -369,7 +369,7 @@ function CompanionBookings() {
                 </p>
               </div>
 
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-yellow-500/10">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-yellow-800/40 bg-[#332208]">
                 <Hourglass
                   size={21}
                   className="text-yellow-400"
@@ -380,7 +380,7 @@ function CompanionBookings() {
           </div>
 
           {/* Confirmed */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div className="rounded-2xl border border-purple-900/40 bg-[#130924] p-5 shadow-md">
             <div className="flex items-center justify-between">
 
               <div>
@@ -393,7 +393,7 @@ function CompanionBookings() {
                 </p>
               </div>
 
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-500/10">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-800/40 bg-[#063321]">
                 <CircleCheck
                   size={21}
                   className="text-green-400"
@@ -404,7 +404,7 @@ function CompanionBookings() {
           </div>
 
           {/* Completed */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div className="rounded-2xl border border-purple-900/40 bg-[#130924] p-5 shadow-md">
             <div className="flex items-center justify-between">
 
               <div>
@@ -417,7 +417,7 @@ function CompanionBookings() {
                 </p>
               </div>
 
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-500/10">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-blue-800/40 bg-[#08223d]">
                 <Check
                   size={21}
                   className="text-blue-400"
@@ -431,11 +431,11 @@ function CompanionBookings() {
 
         {/* Empty */}
         {bookings.length === 0 ? (
-          <section className="mt-8 flex min-h-100 items-center justify-center rounded-3xl border border-white/10 bg-white/5">
+          <section className="mt-8 flex min-h-100 items-center justify-center rounded-3xl border border-purple-900/40 bg-[#130924]">
 
             <div className="max-w-md px-6 text-center">
 
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-purple-500/10">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-purple-800/40 bg-[#220c3d]">
                 <CalendarDays
                   size={30}
                   className="text-purple-400"
@@ -481,7 +481,7 @@ function CompanionBookings() {
 
                 const isPending =
                   booking.status ===
-                  BOOKING_STATUS.PENDING;
+                  Booking_status.PENDING;
 
                 const isUpdating =
                   updatingBookingId ===
@@ -490,7 +490,7 @@ function CompanionBookings() {
                 return (
                   <article
                     key={booking.$id}
-                    className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:border-purple-700/30 sm:p-6"
+                    className="rounded-3xl border border-purple-900/40 bg-[#130924] p-5 shadow-md transition hover:border-purple-600/60 sm:p-6"
                   >
 
                     {/* Top */}
@@ -627,7 +627,7 @@ function CompanionBookings() {
                             onClick={() =>
                               handleStatusUpdate(
                                 booking.$id,
-                                BOOKING_STATUS.REJECTED
+                                Booking_status.REJECTED
                               )
                             }
                             className="flex items-center justify-center gap-2 rounded-xl border border-red-500/20 bg-red-500/5 px-5 py-2.5 text-sm font-medium text-red-400 transition hover:bg-red-500/10 disabled:cursor-not-allowed disabled:opacity-50"
@@ -643,7 +643,7 @@ function CompanionBookings() {
                             onClick={() =>
                               handleStatusUpdate(
                                 booking.$id,
-                                BOOKING_STATUS.CONFIRMED
+                                Booking_status.CONFIRMED
                               )
                             }
                             className="flex items-center justify-center gap-2 rounded-xl bg-[#570080] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#6d009f] disabled:cursor-not-allowed disabled:opacity-50"

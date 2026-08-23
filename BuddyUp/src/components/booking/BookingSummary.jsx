@@ -12,7 +12,7 @@ function BookingSummary({
     Number(duration);
 
   return (
-    <aside className="h-fit rounded-3xl border border-white/10 bg-white/5 p-6">
+    <aside className="h-fit rounded-3xl border border-purple-900/40 bg-[#130924] p-6">
 
       {/* Companion */}
       <div className="flex items-center gap-4">

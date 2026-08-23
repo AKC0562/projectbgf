@@ -16,7 +16,7 @@ function BookingSuccess({
     <main className="min-h-[70vh] px-5 py-10 text-white">
       <div className="mx-auto flex max-w-2xl items-center justify-center">
 
-        <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
+        <div className="w-full rounded-3xl border border-purple-900/40 bg-[#130924] p-8 text-center">
 
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
             <CheckCircle2
@@ -34,7 +34,7 @@ function BookingSuccess({
             successfully submitted.
           </p>
 
-          <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-5 text-left">
+          <div className="mt-8 rounded-2xl border border-purple-900/40 bg-[#0d0519] p-5 text-left">
 
             <div className="flex justify-between">
               <span className="text-gray-400">

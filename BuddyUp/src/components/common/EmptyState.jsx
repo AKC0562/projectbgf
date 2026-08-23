@@ -6,7 +6,7 @@ function EmptyState({
   icon: Icon = Inbox,
 }) {
   return (
-    <div className="flex min-h-87.5 items-center justify-center rounded-3xl border border-white/10 bg-white/5 px-6">
+    <div className="flex min-h-87.5 items-center justify-center rounded-3xl border border-purple-900/40 bg-[#130924] px-6">
 
       <div className="max-w-md text-center">
 

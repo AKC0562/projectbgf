@@ -53,8 +53,8 @@ function RoleSelector({
                 transition
                 ${
                   selected
-                    ? "border-purple-600 bg-purple-600/10"
-                    : "border-white/10 bg-white/5 hover:border-purple-700/40"
+                    ? "border-purple-500 bg-[#2b1050]"
+                    : "border-purple-900/40 bg-[#130924] hover:border-purple-600/60"
                 }
               `}
             >

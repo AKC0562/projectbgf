@@ -19,7 +19,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1b0c30] border border-purple-900/60"
           >
             <Sparkles className="w-4 h-4 text-purple-400" />
             <span className="text-xs font-medium text-purple-200 tracking-wide uppercase">Redefining Companionship</span>
@@ -56,7 +56,7 @@ export default function Home() {
               Find a Buddy
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link to="/register" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-2xl font-semibold backdrop-blur-md transition-all active:scale-95">
+            <Link to="/register" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1b0c30] hover:bg-[#281347] border border-purple-900/60 text-white rounded-2xl font-semibold transition-all active:scale-95">
               How it works
             </Link>
           </motion.div>

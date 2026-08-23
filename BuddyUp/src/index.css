@@ -1,3 +1,31 @@
 @import "tailwindcss";
 
-/* #570080 the purple shade */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #000000;
+  background-image: linear-gradient(
+    180deg,
+    #4a1d70 0%,
+    #361353 20%,
+    #210935 40%,
+    #0f031b 65%,
+    #000000 90%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}

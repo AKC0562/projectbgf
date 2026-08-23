@@ -16,7 +16,7 @@ function BookingCard({
   loading = false,
 }) {
   return (
-    <article className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:border-purple-700/30 sm:p-6">
+    <article className="rounded-3xl border border-purple-900/40 bg-[#130924] p-5 transition hover:border-purple-600/60 sm:p-6">
 
       {/* Top */}
       <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">

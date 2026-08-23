@@ -11,11 +11,11 @@ function AvailabilityBadge({
         px-3
         py-1
         text-xs
-        backdrop-blur-sm
+        border
         ${
           available
-            ? "bg-green-500/90 text-white"
-            : "bg-black/70 text-gray-300"
+            ? "border-emerald-500/50 bg-[#063321] text-emerald-300"
+            : "border-gray-700 bg-[#180d2c] text-gray-300"
         }
       `}
     >

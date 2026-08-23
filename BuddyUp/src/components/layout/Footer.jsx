@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black text-white">
+    <footer className="border-t border-white/10 text-white">
 
       <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
 

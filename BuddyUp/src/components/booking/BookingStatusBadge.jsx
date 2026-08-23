@@ -6,37 +6,37 @@ import {
   X,
 } from "lucide-react";
 
-import { BOOKING_STATUS } from "../../constants/bookings";
+import { Booking_status } from "../../constants/bookings";
 
 function BookingStatusBadge({
   status,
 }) {
   const config = {
-    [BOOKING_STATUS.PENDING]: {
+    [Booking_status.PENDING]: {
       icon: Hourglass,
       className:
         "bg-yellow-500/10 border-yellow-500/20 text-yellow-400",
     },
 
-    [BOOKING_STATUS.CONFIRMED]: {
+    [Booking_status.CONFIRMED]: {
       icon: Check,
       className:
         "bg-green-500/10 border-green-500/20 text-green-400",
     },
 
-    [BOOKING_STATUS.COMPLETED]: {
+    [Booking_status.COMPLETED]: {
       icon: CircleCheck,
       className:
         "bg-blue-500/10 border-blue-500/20 text-blue-400",
     },
 
-    [BOOKING_STATUS.REJECTED]: {
+    [Booking_status.REJECTED]: {
       icon: CircleX,
       className:
         "bg-red-500/10 border-red-500/20 text-red-400",
     },
 
-    [BOOKING_STATUS.CANCELLED]: {
+    [Booking_status.CANCELLED]: {
       icon: X,
       className:
         "bg-gray-500/10 border-gray-500/20 text-gray-400",
@@ -44,7 +44,7 @@ function BookingStatusBadge({
   };
 
   const current =
-    config[status] || config[BOOKING_STATUS.PENDING];
+    config[status] || config[Booking_status.PENDING];
 
   const Icon = current.icon;
 

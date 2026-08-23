@@ -14,16 +14,16 @@ function Button({
       "bg-[#570080] text-white hover:bg-[#6d009f]",
 
     secondary:
-      "border border-white/10 bg-white/5 text-white hover:bg-white/10",
+      "border border-purple-800/40 bg-[#1e0e38] text-white hover:bg-[#2a144e]",
 
     success:
       "bg-green-600 text-white hover:bg-green-700",
 
     danger:
-      "bg-red-600/80 text-white hover:bg-red-700",
+      "bg-red-700 text-white hover:bg-red-800",
 
     ghost:
-      "bg-transparent text-gray-400 hover:bg-white/5 hover:text-white",
+      "bg-transparent text-gray-400 hover:bg-[#1e0e38] hover:text-white",
   };
 
   return (

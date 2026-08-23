@@ -111,7 +111,7 @@ function MyBookings() {
           {bookings.map((booking) => (
             <article
               key={booking.$id}
-              className="rounded-2xl border border-white/10 bg-white/5 p-5"
+              className="rounded-2xl border border-purple-900/40 bg-[#130924] p-5 shadow-md"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
@@ -138,7 +138,7 @@ function MyBookings() {
                     ₹{booking.totalAmount}
                   </p>
 
-                  <span className="mt-2 inline-block rounded-full bg-yellow-500/10 px-3 py-1 text-xs capitalize text-yellow-400">
+                  <span className="mt-2 inline-block rounded-full border border-yellow-600/40 bg-[#2d2208] px-3 py-1 text-xs capitalize text-yellow-300">
                     {booking.status}
                   </span>
                 </div>

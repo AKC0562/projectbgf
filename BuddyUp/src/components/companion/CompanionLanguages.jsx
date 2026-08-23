@@ -6,7 +6,7 @@ function CompanionLanguages({
       {languages.map((language) => (
         <span
           key={language}
-          className="rounded-lg bg-white/10 px-3 py-2 text-sm text-gray-300"
+          className="rounded-lg border border-purple-800/40 bg-[#1e0e38] px-3 py-2 text-sm text-purple-200"
         >
           {language}
         </span>
