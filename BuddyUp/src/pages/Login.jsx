@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LogIn } from "lucide-react";
 
-import { useUser } from "../providers/useUser";
+import { useUser } from "../hooks/useUser";
 
 function Login() {
   const navigate = useNavigate();

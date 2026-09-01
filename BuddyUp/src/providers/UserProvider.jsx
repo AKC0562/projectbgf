@@ -6,7 +6,7 @@ import {
 import authService from "../services/authService";
 import userService from "../services/userService";
 import companionService from "../services/companionService";
-import UserContext from "./UserContext";
+import UserContext from "../hooks/useUser";
 
 export function UserProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);

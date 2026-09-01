@@ -30,6 +30,24 @@ const userProvider = {
             })
 
         },
+        async updateLocation(userId, locationData) {
+            if (!userId) {
+                throw new Error("User ID is required.");
+            }
+
+            if (!locationData) {
+                throw new Error(
+                "Location data is required."
+                );
+            }
+
+            return await tablesDB.updateRow({
+                databaseId: env.appwriteDatabaseId,
+                tableId: env.appwriteUserTableId,
+                rowId: userId,
+                data: locationData,
+            });
+        },   
         async deleteProfile(userId){
             return await tablesDB.deleteRow({
                 databaseId:env.appwriteDatabaseId,

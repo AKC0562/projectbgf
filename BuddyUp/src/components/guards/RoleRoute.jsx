@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useUser } from "../../providers/useUser";
+import { useUser } from "../../hooks/useUser";
 
 function RoleRoute({ allowedRoles }) {
   const {

@@ -74,6 +74,37 @@ const companionProvider = {
       data: data,
     });
   },
+  //---------------------------------
+  //Update Profile
+  //---------------------------------
+  async updateLocation(
+  companionId,
+  locationData
+) {
+  if (!companionId) {
+    throw new Error(
+      "Companion ID is required."
+    );
+  }
+
+  if (!locationData) {
+    throw new Error(
+      "Location data is required."
+    );
+  }
+
+  return await tablesDB.updateRow({
+    databaseId:
+      env.appwriteDatabaseId,
+
+    tableId:
+      env.appwriteCompanionsTableId,
+
+    rowId: companionId,
+
+    data: locationData,
+  });
+},
 
   // --------------------------------
   // DELETE PROFILE

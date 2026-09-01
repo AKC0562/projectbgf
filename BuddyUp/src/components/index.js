@@ -8,6 +8,8 @@ export { default as ErrorState } from "./common/ErrorState";
 export { default as EmptyState } from "./common/EmptyState";
 export { default as Alert } from "./common/Alert";
 export { default as Modal } from "./common/Modal";
+export {default as ImageUpload } from "./common/ImageUpload";
+export {default as LocationButton} from "./common/LocationButton"
 
 // Auth
 export { default as AuthForm } from "./auth/AuthForm";

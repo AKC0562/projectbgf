@@ -10,6 +10,12 @@ const userService = {
     async updateProfile(userId,data){
         return await userProvider.updateProfile(userId,data)
     },
+    async updateLocation(userId, locationData) {
+        return await userProvider.updateLocation(
+            userId,
+            locationData
+        );
+    },
     async deleteProfile(userId){
         return await userProvider.deleteProfile(userId)
     }

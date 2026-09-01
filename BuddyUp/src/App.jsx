@@ -11,7 +11,7 @@ import {
   GuestRoute,
 } from "./components";
 
-import { useUser } from "./providers/useUser";
+import { useUser } from "./hooks/useUser";
 
 // Pages
 import Home from "./pages/Home";

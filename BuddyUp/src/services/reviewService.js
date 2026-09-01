@@ -1,40 +1,19 @@
-import reviewProvider from "../appwrite/reviewProvider";
+import storageProvider from "../appwrite/storageProvider";
 
-const reviewService = {
-  async create(data) {
-    return await reviewProvider.create(data);
-  },
-
-  async getById(reviewId) {
-    return await reviewProvider.getById(reviewId);
-  },
-
-  async getByCompanionId(companionId) {
-    return await reviewProvider.getByCompanionId(
-      companionId
+const storageService = {
+  async uploadProfileImage(file) {
+    return await storageProvider.uploadProfileImage(
+      file
     );
   },
 
-  async getByClientId(clientId) {
-    return await reviewProvider.getByClientId(clientId);
+  getFilePreview(fileId) {
+    return storageProvider.getFilePreview(fileId);
   },
 
-  async getByBookingId(bookingId) {
-    return await reviewProvider.getByBookingId(
-      bookingId
-    );
-  },
-
-  async update(reviewId, data) {
-    return await reviewProvider.update(
-      reviewId,
-      data
-    );
-  },
-
-  async delete(reviewId) {
-    return await reviewProvider.delete(reviewId);
+  async deleteFile(fileId) {
+    return await storageProvider.deleteFile(fileId);
   },
 };
 
-export default reviewService;
+export default storageService;

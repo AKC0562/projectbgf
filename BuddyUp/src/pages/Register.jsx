@@ -6,7 +6,7 @@ import {
   UserPlus,
 } from "lucide-react";
 
-import { useUser } from "../providers/useUser";
+import { useUser } from "../hooks/useUser";
 
 function Register() {
   const navigate = useNavigate();
